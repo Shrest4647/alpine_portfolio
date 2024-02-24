@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alpine Portfolio</title>
+  <!-- Alpine Plugins -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+  <!-- Alpine Core -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="container" x-data="{activeNavLink: $persist('home')}">
+    <nav>
+      <ul>
+        <li x-on:click="activeNavLink = 'home'">
+          <a href="#home">
+            <button :class="{ 'active': activeNavLink === 'home' }">
+              <i class="fas fa-home"></i> Home
+            </button>
+          </a>
+        </li>
+        <li x-on:click="activeNavLink = 'about'">
+          <a href="#about">
+            <button :class="{ 'active': activeNavLink === 'about' }">
+              <i class="fas fa-user"></i> About
+            </button>
+          </a>
+        </li>
+        <li x-on:click="activeNavLink = 'skills'">
+          <a href="#skills">
+            <button :class="{ 'active': activeNavLink === 'skills' }">
+              <i class="fas fa-star"></i> Skills
+            </button>
+          </a>
+        </li>
+        <li x-on:click="activeNavLink = 'education'">
+          <a href="#education">
+            <button :class="{ 'active': activeNavLink === 'education' }">
+              <i class="fas fa-graduation-cap"></i> Education
+            </button>
+          </a>
+        </li>
+        <li x-on:click="activeNavLink = 'projects'">
+          <a href="#projects">
+            <button :class="{'active': activeNavLink === 'projects'}">
+              <i class="fas fa-briefcase"></i> Projects
+            </button>
+          </a>
+        </li>
+        <li x-on:click="activeNavLink = 'correspondence'">
+          <a href="#correspondence">
+            <button :class="{ 'active': activeNavLink === 'correspondence' }">
+              <i class="fas fa-envelope"></i> Correspondence
+            </button>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <section id="home" x-show="activeNavLink === 'home'">
+        <div class="profile" x-data="{username: 'Sun Raymond'}">
+          <img src="assets/images/next.webp" alt="User profile picture" class="profile-image" />
+          <div class="greeting">
+            <p class="">Hi 👋! I am <span x-text="username"></span>. </p>
+          </div>
+        </div>
+      </section>
+      <section id="about" x-show="activeNavLink === 'about'" x-data="{
+          introVisible: false, 
+          profession: 'Engineer', 
+          yearsOfExperience: 10,
+          fieldOfWork: 'Software',
+          skills: `Web, Python, Automation, and DevOps`,
+          goals: 'Become a successful Enterpreneur'
+          }" x-init="setTimeout(() => introVisible = true, 500)">
+        <h2 class="fade-in" x-show="introVisible">About Me</h2>
+        <p class="fade-in" x-show="introVisible">
+          I'm a passionate
+          <strong x-text="profession"></strong>
+          with
+          <strong x-text="yearsOfExperience"></strong>
+          years of experience in
+          <strong x-text="fieldOfWork"></strong>.
+          I'm skilled in <strong x-text="skills"></strong>
+          and driven by a desire to
+          <span x-text="goals"></span>.
+        </p>
+      </section>
+      <section id="skills" x-show="activeNavLink === 'skills'" x-data="{ skills: [
+          { name: 'Skill 1', expertise: 'Expert', remarks: 'Lorem ipsum dolor sit amet...' },
+          { name: 'Skill 2', expertise: 'Intermediate', remarks: 'Duis aute irure dolor in reprehenderit...' },
+        ]}">
+        <h2>Skills</h2>
+        <div>
+          <template x-for="skill in skills" :key="skill.name">
+            <div class="skill-card">
+              <h3 x-text="skill.name"></h3>
+              <p><b>Expertise:</b> <span x-text="skill.expertise"></span></p>
+              <p><span x-text="skill.remarks"></span></p>
+            </div>
+          </template>
+        </div>
+      </section>
+      <section id="education" x-show="activeNavLink === 'education'">
+        <h2>Education</h2>
+        <div x-data="
+          { currentSlide: 0, 
+            previousSlide: null,
+            nextSlide: null,
+            education: [
+            { degree: 'Bachelor of Science in Medicine', institute: '[Institute Name]', year: 2024 },
+            { degree: 'Bachelor of Science in Physics', institute: '[Institute Name]', year: 2024 },
+            { degree: 'Bachelor of Science in Engineering', institute: '[Institute Name]', year: 2024 },
+            { degree: 'Associate of Arts in Sociology', institute: '[Institute Name]', year: 2022 }
+          ]
+          }">
+          <div class="carousel">
+            <template x-for="(education, index) in education" :key="index">
+              <div class="slide">
+                <h3 x-text="education.degree"></h3>
+                <p><strong>Institute:</strong> <span x-text="education.institute"></span></p>
+                <p><strong>Year of Graduation:</strong><span x-text="education.year"></span></p>
+              </div>
+            </template>
+          </div>
+        </div>
+      </section>
+      <section id="projects" x-show="activeNavLink === 'projects'">
+        <h2>Projects</h2>
+        <div class="projects" x-data="{ projects: [
+            { title: 'Project 1', description: 'A brief description of your project.', link: 'https://your-project-link.com' },
+            { title: 'Project 2', description: 'Another description of your project.', link: 'https://another-project-link.com' },
+          ] }">
+          <template x-for="project in projects" :key="project.title">
+            <div class="project-card">
+              <h3 x-text="project.title"></h3>
+              <p x-text="project.description"></p>
+              <a :href="project.link" target="_blank">View Project</a>
+            </div>
+          </template>
+        </div>
+      </section>
+      <section id="correspondence" x-show="activeNavLink === 'correspondence'">
+        <div x-data="{
+            email: 'your_email@example.com',
+            socialMedia: [
+              { name: 'LinkedIn', link: 'https://www.linkedin.com/in/your-profile' },
+              { name: 'Twitter', link: 'https://twitter.com/your_handle' },
+              { name: 'Facebook', link: 'https://facebook.com/fb_id'},
+              { name: 'Instagram', link: 'https://instagram.com/insta.id'}
+            ],
+            get mailto() {
+              return `mailto: ${this.email}`
+            },
+            getIconClass(icon) {
+              return `fa-brands fa-${icon.toLowerCase()}`
+            }
+          }">
+          <h2>Correspondence</h2>
+          <div class="card">
+            <div class="reach-out">Reach out to me at <a x-ref="sendemail" :href="mailto">
+                <span x-text="email"></span>
+              </a>.
+            </div>
+            <div class="connect">
+              <button class="connect-button" x-on:click="$refs.sendemail.click()">Connect</button>
+            </div>
+            <ul class="social-links">
+              <template x-for="link in socialMedia" :key="link.name">
+                <li>
+                  <a :href="link.link" target="_blank" :title="link.name">
+                    <span x-text="link.name"></span>
+                    <i :class="getIconClass(link.name)"></i>
+                  </a>
+                </li>
+              </template>
+            </ul>
+          </div>
+
+        </div>
+
+      </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

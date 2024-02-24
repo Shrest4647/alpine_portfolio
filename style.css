@@ -1,0 +1,191 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+header {
+  height: 100%;
+}
+nav {
+  flex: 0 0 200px;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+main {
+  flex: 1 0 250px;
+}
+section {
+  padding: 10px;
+}
+
+nav ul {
+  margin-left: -24px;
+  list-style-type: none;
+}
+
+nav li {
+  margin-bottom: 10px;
+}
+
+nav button {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+nav button.active {
+  background-color: #333;
+  color: #fff;
+}
+
+nav button i {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+nav button:hover {
+  transform: scale(1.1) translate(0%, -5%);
+}
+
+.profile {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.profile-image {
+  flex: 1;
+  width: clamp(200px, 75%, 500px);
+  border-radius: 45%;
+  object-fit: cover;
+}
+
+.greeting {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-size: 24px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-item {
+  flex: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+.skill-card {
+  display: inline-block;
+  margin-top: 10px;
+  width: 90%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5%;
+  text-align: center;
+  box-shadow: #333;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.slide {
+  display: inline-block;
+  width: 90%;
+  margin-top: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.next-button,
+.prev-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.projects {
+  width: 100%;
+}
+.project-card {
+  display: inline-block;
+  width: 90%;
+  margin-top: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+.connect-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.social-links {
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links li {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+.reach-out {
+  font-size: larger;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+}
+.connect {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+#correspondence {
+  display: block;
+}
+.card {
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
